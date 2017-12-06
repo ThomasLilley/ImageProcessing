@@ -7,20 +7,47 @@ I = rgb2gray(I);
 
 figure(1);
 imshow(I);
-title('input');
+title('Input image converted to Grayscale');
 
-mask = zeros(1,25);
-K = 1;
+mask = zeros(5);
+J = padarray(I,[2,2],127);    
 
-J = zeros(476,758);
-
-for r = 3:1:size(I,1)
-    for c = 3:1:size(I,2)
-        J(r,c) = I(r,c);             
-        
+for c = 1:size(J,1)
+    for r = 1:size(J,2)
+        for i = 1:5
+            for j = 1:5
+                if c < 474 && r < 756            
+                mask(i,j) = J(c+i,r+j);
+                end                
+            end
+        end
+        M = median(mask(:));        
+        J(c,r) = M;              
     end
-end     
-        
-figure(2);
-imshow(J,[0,255]);
+end
 
+J = uint8(J);
+figure(2);
+imshow(J);
+title('Median average filter');
+
+K = padarray(I,[2,2],127);
+
+for c = 1:size(K,1)
+    for r = 1:size(K,2)
+        for i = 1:5
+            for j = 1:5
+                if c < 474 && r < 756            
+                mask(i,j) = K(c+i,r+j);
+                end                
+            end
+        end
+        M = mean(mask(:));        
+        K(c,r) = M;              
+    end
+end
+
+K = uint8(K);
+figure(3);
+imshow(K);
+title('Mean average filter');

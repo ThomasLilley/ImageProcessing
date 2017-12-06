@@ -41,14 +41,14 @@ for i = 0:MNewSize-1
 end
 
 %outputs the image as a figure in grayscale with a title
+Out = uint8(Out);
 figure(3);
-imshow(Out,[0,255]);
+imshow(Out);
 title('Step-3: Nearest Neighbour Interpolation');
 
 
 % Step-4: Resize image from 556x612 to 1668x1836 (1:3)
 % using Bilinear interpolation
-
 
 
 
