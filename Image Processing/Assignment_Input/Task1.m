@@ -42,3 +42,22 @@ figure(3);
 imshow(O);
 title('Step-3: Nearest Neighbour Interpolation');
 
+
+% step-4: Bilinear interpolation
+O1 = zeros(NewM,NewN);
+for i = 1:NewM
+    for j = 1:NewN
+        
+        x1 = A(i);
+        x2 = A(i+3);
+        y1 = A(j);
+        y2 = A(j+3);
+        
+    end
+end
+
+O1 = uint8(O1);
+figure(4);
+imshow(O1);
+title('Step-4: Bilinear Interpolation');
+
