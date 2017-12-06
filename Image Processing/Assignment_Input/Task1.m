@@ -61,3 +61,5 @@ figure(4);
 imshow(O1);
 title('Step-4: Bilinear Interpolation');
 
+
+

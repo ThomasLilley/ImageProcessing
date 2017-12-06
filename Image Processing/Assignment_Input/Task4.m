@@ -20,11 +20,26 @@ for c = 1:size(I,1)
     end
 end
 
-figure(1);
+I = imadjust(I);
+figure(1)
 imshow(I);
 
+ImBin = imbinarize(I);
+ImInv = imcomplement(ImBin);
 
-I = imbinarize(I);
-I = imcomplement(I);
-figure(3);
-imshow(I);
+figure(2)
+imshow(ImInv);
+title('median filter and binarize');
+
+% remove all object containing fewer than 700 pixels
+bw = bwareaopen(ImInv,750);
+% remove all object containing fewer than 900 pixels
+bw = bw & ~bwareaopen(bw,900);
+
+figure(3)
+imshow(bw);
+title('output');
+
+
+
+
