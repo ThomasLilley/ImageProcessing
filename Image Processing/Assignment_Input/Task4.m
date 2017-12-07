@@ -24,7 +24,9 @@ I = imadjust(I);
 figure(1)
 imshow(I);
 
+%convert to binary
 ImBin = imbinarize(I);
+%invert
 ImInv = imcomplement(ImBin);
 
 figure(2)
@@ -38,7 +40,7 @@ bw = bw & ~bwareaopen(bw,900);
 
 figure(3)
 imshow(bw);
-title('output');
+title('Object filtering and final output');
 
 
 
