@@ -8,21 +8,20 @@ imshow(I);
 title('Step-1: Load input image');
 % where the colour range is 80-100 in the input image,
 % change the colour to the value of 220
-for J = 80:100
-    for row = 1 : size(I,1)
-        for col = 1: size(I,2)
-            if I(row,col) == J
+
+for row = 1 : size(I,1)
+    for col = 1: size(I,2)
+        if I(row,col) >= 80 && I(row,col) <= 100
                 I(row,col) = 220;
-            end
         end
     end
 end
+    
 figure(2);
 imshow(I);
 title('Step-2: Output');
 
-%generate plot of transformation
-
+%generate plot of transformation performed
 x1 = 0:80;
 y1 = 1*x1;
 
